@@ -1,0 +1,27 @@
+<!-- Filter Section -->
+<h1>COMP 3133 | Lab Test2 | SpaceX API</h1>
+<h2>Mission List</h2>
+
+<app-missionfilter (filtersChanged)="onFiltersChanged($event)"></app-missionfilter>
+
+
+<!-- Loading Spinner -->
+<div *ngIf="loading" style="text-align: center; margin-top: 2rem;">
+  <mat-spinner></mat-spinner>
+</div>
+
+<!-- Mission Cards -->
+<div class="mission-list" *ngIf="!loading">
+  <mat-card
+    *ngFor="let mission of missions"
+    class="mission-card"
+    [routerLink]="['/mission', mission.flight_number]"
+  >
+    <img mat-card-image [src]="mission.links.mission_patch_small" alt="Mission Patch" />
+    <mat-card-title>{{ mission.mission_name }} ({{ mission.launch_year }})</mat-card-title>
+    <mat-card-content>
+      <p>{{ mission.details || 'No details available.' }}</p>
+      <p><strong>Rocket:</strong> {{ mission.rocket.rocket_name }} ({{ mission.rocket.rocket_type }})</p>
+    </mat-card-content>
+  </mat-card>
+</div>

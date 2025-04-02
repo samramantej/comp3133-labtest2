@@ -1,0 +1,23 @@
+<div class="filter-box">
+    <h2>Mission List</h2>
+  
+    <label>Filter by Launch Year:
+      <input [(ngModel)]="yearInput" type="text" />
+    </label>
+    <button (click)="filter()">Filter</button>
+  
+    <div>
+      <label>Launch</label><br />
+      <label><input type="radio" name="launch" (change)="selectLaunch(true)" /> Successful</label>
+      <label><input type="radio" name="launch" (change)="selectLaunch(false)" /> Failed</label>
+    </div>
+  
+    <div>
+      <label>Landing</label><br />
+      <label><input type="radio" name="landing" (change)="selectLanding(true)" /> Successful</label>
+      <label><input type="radio" name="landing" (change)="selectLanding(false)" /> Failed</label>
+    </div>
+  
+    <button (click)="resetFilters()">Reset Filters</button>
+  </div>
+  
